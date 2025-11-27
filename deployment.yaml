@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: am404n/gamestartb:latestv3
+          image: am404n/gamestartb:latestv4
           ports:
             - containerPort: 8000
           env:
@@ -27,17 +27,22 @@ spec:
             - name: DB_HOST
               valueFrom:
                 secretKeyRef:
-                  name: rds-secret2
+                  name: rds-secret3
                   key: DB_HOST
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: rds-secret3
+                  key: DB_NAME
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: rds-secret2
+                  name: rds-secret3
                   key: DB_USER
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: rds-secret2
+                  name: rds-secret3
                   key: DB_PASSWORD
         - name: frontend
           image: am404n/gamestartb:frontlatestv6
